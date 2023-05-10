@@ -9,9 +9,11 @@ import java.util.Scanner;
 public class CajeroAutomatico {
 
         private CuentaBancaria cuenta;
+        private static int ultimoRegistro;
 
     public CajeroAutomatico() {
         cuenta = new CuentaBancaria(123456789, 2000);
+        ultimoRegistro = 0;
     }
 
     public boolean validarNIP(String nip) {
@@ -22,12 +24,13 @@ public class CajeroAutomatico {
         Scanner leer = new Scanner(System.in);
         String opcion = "0";
 
-        while (!opcion.equals("4")) {
+        while (!opcion.equals("5")) {
             System.out.println("\n\nCAJERO BCA");
             System.out.println("1. CONSULTAR SALDO");
             System.out.println("2. REALIZAR UN DEPOSITO");
             System.out.println("3. RETIRAR EFECTIVO");
-            System.out.println("4. SALIR");
+            System.out.println("4. NUEVO CLIENTE");
+            System.out.println("5. SALIR");
             opcion = leer.next();
 
             switch (opcion) {
@@ -58,13 +61,45 @@ public class CajeroAutomatico {
                     break;
 
                 case "4":
-                    System.out.println("Gracias por utilizar el cajero BCA");
+                    System.out.println("Nuevo cliente");
+                    crearCliente();
                     break;
+                    
+                case "5":
+                    System.out.println("Gracias por utilizar el cajero BCA");
 
                 default:
                     System.out.println("Opcion incorrecta");
                     break;
             }
+            
         }
+    }
+    
+    private void crearCliente() {
+        Scanner leer = new Scanner(System.in);
+        System.out.println("Ingresar nombre del cliente");
+        String nombre = leer.nextLine();
+        System.out.println("Ingresar telefono");
+        String telefono = leer.nextLine();
+        System.out.println("Ingresar direccion");
+        String direccion = leer.nextLine();
+        System.out.println("Ingresar correo electronico");
+        String correoElectronico = leer.nextLine();
+        
+        Cliente cliente = new Cliente(nombre, telefono, direccion, correoElectronico);
+        cliente.generarIP(ultimoRegistro);
+        ultimoRegistro++;
+        cliente.generarNumeroCuenta();
+        cliente.registrarNIP();
+        
+        System.out.println("Cliente registrado exitosamente");
+        System.out.println("Nombre: " + cliente.getNombre());
+        System.out.println("Telefono: " + cliente.getTelefono());
+        System.out.println("Direccion: " + cliente.getDireccion());
+        System.out.println("Correo electronico: " + cliente.getCorreoElectronico());
+        System.out.println("IP generada: " + ultimoRegistro);
+        System.out.println("Numero de cuenta: " + cliente.getNumeroCuenta());
+        
     }
 }

@@ -1,48 +1,79 @@
 package models;
 
+import java.util.Scanner;
+
 /**
  *
  * @author chanp
  */
 public class Cliente {
     private String nombre;
+    private String telefono;
     private String direccion;
-    private String tarjetaCLABE;
+    private String correoElectronico;
+    private int numeroCuenta;
+    private int nip;
     
-    public Cliente(String nombre, String direccion, String tarjetaCLABE) {
+    public Cliente(String nombre, String telefono, String direccion, String correoElectronico) {
         this.nombre = nombre;
+        this.telefono = telefono;
         this.direccion = direccion;
-        this.tarjetaCLABE = tarjetaCLABE;
+        this.correoElectronico = correoElectronico;
     }
     
     public String getNombre() {
         return nombre;
     }
-    
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    public String getTelefono() {
+        return telefono;
     }
     
     public String getDireccion() {
         return direccion;
     }
     
-    public void setDireccion(String direccion){
-        this.direccion = direccion;
-    }
     
-    public String getTarjetaCLABE() {
-        return tarjetaCLABE;
-    }
-    
-    public void setTarjetaCLABE(String tarjetaCLABE) {
-        this.tarjetaCLABE = tarjetaCLABE;
+    public String getCorreoElectronico() {
+        return correoElectronico;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" + "nombre=" + nombre + ", direccion=" + direccion + ", tarjetaCLABE=" + tarjetaCLABE + '}';
+    public int getNumeroCuenta() {
+        return numeroCuenta;
     }
+    
+    public void generarNumeroCuenta() {
+        long cuenta = (long) (Math.random() * 9000000000000000L) + 1000000000000000L;
+        numeroCuenta = (int) cuenta;
+    }
+    
+    public void registrarNIP() {
+        Scanner leer = new Scanner(System.in);
+        boolean nipValido = false;
+        
+        while (!nipValido) {
+            System.out.println("Ejemplo: 1000");
+            System.out.println("Registra tu NIP (4 digitos):");
+            nip = leer.nextInt();
+            
+            if (nip >= 1000 && nip <= 9999) {
+                nipValido = true;
+            } else {
+                System.out.println("El NIP debe ser de 4 digitos\nINTENTELO DE NUEVO");
+            }
+        }
+    }
+    
+    public void generarIP(int registro) {
+        System.out.println("Generar IP (presione ENTER)");
+        Scanner leer = new Scanner(System.in);
+        leer.nextLine();
+        System.out.println("IP generada: " + registro);
+    }
+    
+
+
+    
     
     
     
