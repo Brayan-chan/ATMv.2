@@ -1,5 +1,8 @@
 package cajeroautomaticov.pkg2;
 import java.util.Scanner;
+import models.CajeroAutomatico;
+import models.CuentaBancaria;
+import models.Cliente;
 /**
  *
  * @author chanp
@@ -8,6 +11,24 @@ public class CajeroAutomaticoV2 {
 
    
     public static void main(String[] args) {
+        System.out.println("   CAJERO AUTOMATICO BCA");
+        System.out.println("   WELCOME - BIENVENIDO\n");
+        Scanner leer = new Scanner(System.in);
+        System.out.println("Ingresa tu TARJETA - CODIGO - CLABE\n");
+        String tarjeta = leer.next();
+        System.out.println("Ingresa el NIP para acceder a la cuenta");
+        String NIP = leer.next();
+        
+        CajeroAutomatico cajero = new CajeroAutomatico();
+        
+        if (cajero.validarNIP(NIP)) {
+            cajero.mostrarMenu();
+        } else {
+            System.out.println("NIP INCORRECTO");
+        }
+        
+        
+        /*
         System.out.println("   CAJERO AUTOMATICO ATM");
         System.out.println("   WELCOME - BIENVENIDO\n");
         Scanner leer = new Scanner(System.in);
@@ -70,6 +91,7 @@ public class CajeroAutomaticoV2 {
         } else {
             System.out.println("NIP INCORRECTO");
         }
+*/
     } 
     
 }
