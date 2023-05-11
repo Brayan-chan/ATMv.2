@@ -21,6 +21,7 @@ public class CajeroAutomatico {
     }
 
     public void mostrarMenu() {
+        System.out.println("\u001B[36m" + "ACCESO CONCEDIDO");
         Scanner leer = new Scanner(System.in);
         String opcion = "0";
 
@@ -75,8 +76,9 @@ public class CajeroAutomatico {
             
         }
     }
-    
+    public static final String ANSI_CYAN = "\u001B[36m";
     private void crearCliente() {
+        System.out.println(ANSI_CYAN + "Funciones de banca movil proximamente");
         Scanner leer = new Scanner(System.in);
         System.out.println("Ingresar nombre del cliente");
         String nombre = leer.nextLine();

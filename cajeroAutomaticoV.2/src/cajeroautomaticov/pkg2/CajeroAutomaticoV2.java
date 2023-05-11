@@ -8,13 +8,20 @@ import models.Cliente;
  * @author chanp
  */
 public class CajeroAutomaticoV2 {
-    
-
-   
-    public static void main(String[] args) {
-        System.out.println("   CAJERO AUTOMATICO BCA");
-        System.out.println("   WELCOME - BIENVENIDO\n");
+        //Colores
+        public static final String ANSI_BLACK = "\u001B[30m";
+        public static final String ANSI_RED = "\u001B[31m";
+        public static final String ANSI_GREEN = "\u001B[32m";
+        public static final String ANSI_YELLOW = "\u001B[33m";
+        public static final String ANSI_BLUE = "\u001B[34m";
+        public static final String ANSI_PURPLE = "\u001B[35m";
+        public static final String ANSI_CYAN = "\u001B[36m";
+        public static final String ANSI_WHITE = "\u001B[37m";
+    public static void principalMain () {
+        System.out.println("      CAJERO AUTOMATICO BCA");
+        System.out.println("      WELCOME - BIENVENIDO\n");
         Scanner leer = new Scanner(System.in);
+        System.out.println(ANSI_RED + "     SOLO PERSONAL AUTORIZADO");
         System.out.println("Ingresa tu TARJETA - CODIGO - CLABE\n");
         String tarjeta = leer.next();
         System.out.println("Ingresa el NIP para acceder a la cuenta");
@@ -25,8 +32,15 @@ public class CajeroAutomaticoV2 {
         if (cajero.validarNIP(NIP)) {
             cajero.mostrarMenu();
         } else {
-            System.out.println("NIP INCORRECTO");
+            System.out.println(ANSI_RED + "NIP INCORRECTO");
+            principalMain();
         }
+    }
+        
+
+   
+    public static void main(String[] args) {
+    principalMain();
         
         
         /*
